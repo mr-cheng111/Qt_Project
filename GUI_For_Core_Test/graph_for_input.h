@@ -1,6 +1,7 @@
 #ifndef GRAPH_FOR_INPUT_H
 #define GRAPH_FOR_INPUT_H
 
+#include <QApplication>
 #include <QMainWindow>
 #include <QWidget>
 #include <Q3DBars>
@@ -17,37 +18,37 @@ class C3DBars : public Q3DBars
 public:
     C3DBars()
     {
-
         this->setMaxCameraZoomLevel(MAX_ZOOM_SIZE);
 
         this->setMinCameraZoomLevel(MIN_ZOOM_SIZE);
 
         this->setShadowQuality(QAbstract3DGraph::ShadowQuality::High);
 
-        this->setMouseTracking(true);
+        this->setCameraZoomLevel(100);
+
+        this->setCameraPreset(QAbstract3DGraph::CameraPreset::Front);
+
+        this->setMouseTracking(false);
     }
 
-    void wheelEvent(QWheelEvent *event)
+    void wheelEvent(QWheelEvent *e)
     {
-        if(event->pixelDelta().y() > 0)
+        QPoint numDegrees = e->angleDelta() / 8;
+
+        if(this->Zoom_Size + numDegrees.y() / 80.0f < MAX_ZOOM_SIZE)
         {
-            if(this->Zoom_Size + event->pixelDelta().y() / 80.0f < MAX_ZOOM_SIZE)
-            {
-                this->Zoom_Size += event->pixelDelta().y() / 80.0f;
-            }
+            this->Zoom_Size += numDegrees.y() / 80.0f;
         }
-        else if(event->pixelDelta().y() < 0)
+        else if(this->Zoom_Size + numDegrees.y() / 80.0f > MIN_ZOOM_SIZE)
         {
-            if(this->Zoom_Size + event->pixelDelta().y() / 80.0f > MIN_ZOOM_SIZE)
-            {
-                this->Zoom_Size += event->pixelDelta().y() / 80.0f;
-            }
+            this->Zoom_Size += numDegrees.y() / 80.0f;
         }
-        qDebug()<<this->Zoom_Size<<endl;
+
+        //qDebug()<<this->Zoom_Size<<endl;
+        qDebug()<<this->cameraZoomLevel()<<endl;
         this->setCameraZoomLevel(this->Zoom_Size);
-        this->show();
-        Q3DBars::grabMouse();
     }
+
 
 private:
     float Zoom_Size = 100.0f;
