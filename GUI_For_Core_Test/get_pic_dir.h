@@ -10,15 +10,7 @@ class get_pic_dir : QWidget
 {
     Q_OBJECT
 public:
-    get_pic_dir(QWidget *parent = nullptr)
-    {
-        if(parent != nullptr)
-        {
-            this->Parent = parent;
-        }
-
-
-    }
+    get_pic_dir(QWidget *parent = nullptr);
 
 private slots:
     void on_Ok_cilcked()

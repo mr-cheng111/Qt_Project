@@ -29,7 +29,7 @@
    <widget class="QTabWidget" name="tabWidget">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>5</x>
       <y>0</y>
       <width>1270</width>
       <height>860</height>
@@ -39,7 +39,7 @@
      <locale language="Chinese" country="China"/>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>1</number>
     </property>
     <widget class="graph_for_input" name="tab_bar">
      <attribute name="title">

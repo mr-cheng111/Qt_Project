@@ -1,50 +1,68 @@
 #ifndef GRAPH_FOR_INPUT_H
 #define GRAPH_FOR_INPUT_H
 
+#include <QMainWindow>
 #include <QWidget>
 #include <Q3DBars>
-#include <QMouseEvent>
+#include <QWheelEvent>
+#include <QHBoxLayout>
 
 using namespace Qt;
 
 class C3DBars : public Q3DBars
 {
-    void WheelEvent(QWheelEvent *event)
+#define MAX_ZOOM_SIZE 1000.0f
+#define MIN_ZOOM_SIZE 60.0f
+
+public:
+    C3DBars()
     {
-        if(event->angleDelta().y() > 0)
-        {
-            qDebug()<<event->angleDelta().y()<<endl;
-        }
+
+        this->setMaxCameraZoomLevel(MAX_ZOOM_SIZE);
+
+        this->setMinCameraZoomLevel(MIN_ZOOM_SIZE);
+
+        this->setShadowQuality(QAbstract3DGraph::ShadowQuality::High);
+
+        this->setMouseTracking(true);
     }
+
+    void wheelEvent(QWheelEvent *event)
+    {
+        if(event->pixelDelta().y() > 0)
+        {
+            if(this->Zoom_Size + event->pixelDelta().y() / 80.0f < MAX_ZOOM_SIZE)
+            {
+                this->Zoom_Size += event->pixelDelta().y() / 80.0f;
+            }
+        }
+        else if(event->pixelDelta().y() < 0)
+        {
+            if(this->Zoom_Size + event->pixelDelta().y() / 80.0f > MIN_ZOOM_SIZE)
+            {
+                this->Zoom_Size += event->pixelDelta().y() / 80.0f;
+            }
+        }
+        qDebug()<<this->Zoom_Size<<endl;
+        this->setCameraZoomLevel(this->Zoom_Size);
+        this->show();
+        Q3DBars::grabMouse();
+    }
+
+private:
+    float Zoom_Size = 100.0f;
+
 };
 
 class graph_for_input : public QWidget
 {
-    Q_OBJECT
 public:
-    graph_for_input(QWidget *parent = nullptr)
-    {
-        if(parent != nullptr)
-        {
-            this->Parent = parent;
-        }
-
-        this->Bars->setMinimumSize(QSize(256, 256));
-        this->Bars->rowAxis()->setRange(0, 4);
-        this->Bars->columnAxis()->setRange(0, 4);
-        QBar3DSeries *series = new QBar3DSeries;
-        QBarDataRow data;
-        data << QBarDataItem(1.0f) << QBarDataItem(3.0f) << QBarDataItem(7.5f) << QBarDataItem(5.0f) << QBarDataItem(2.2f);
-        series->dataProxy()->addRow(data);
-        this->Bars->addSeries(series);
-        this->Bars->setCameraZoomLevel(120);
-        this->Bars->show();
-    }
-
+    graph_for_input(QWidget *parent = nullptr);
 
 private:
     QWidget *Parent;
-    Q3DBars *Bars;
+    C3DBars *Bars = new C3DBars;
+    QHBoxLayout *HBox = new QHBoxLayout;
 };
 
 #endif // GRAPH_FOR_INPUT_H

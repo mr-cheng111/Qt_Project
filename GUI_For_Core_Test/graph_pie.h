@@ -44,8 +44,7 @@ private slots:
 class graph_pie : public QWidget
 {
 public:
-    //graph_pie(QMainWindow *P = nullptr);
-    graph_pie();
+    graph_pie(QMainWindow *P = nullptr);
     void add_pie(QList<QString> item_name,QList<int> item_data);
     void add_pie(QString Chart_Title,QList<QString> item_name,QList<int> item_data);
     ~graph_pie();

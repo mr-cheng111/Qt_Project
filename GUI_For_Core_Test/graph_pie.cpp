@@ -1,48 +1,12 @@
-
 #include "graph_pie.h"
 
-// graph_pie::graph_pie(QMainWindow *P)
-// {
-//     if(P != nullptr)
-//     {
-//         this->Parent = P;
-//     }
-
-//     QString Str11 = "Test11";
-//     QString Str12 = "Test12";
-
-//     int Num11 = 50.0;
-//     int Num12 = 50.0;
-
-//     QList<QString> Str1;
-//     QList<int> Num1;
-
-//     Str1.push_back(Str11);
-//     Str1.push_back(Str12);
-
-//     Num1.push_back(Num11);
-//     Num1.push_back(Num12);
-
-//     this->add_pie(Str1,Num1);
-
-//     QList<QString> Str2;
-//     QList<int> Num2;
-
-//     Str2<<"Hello1";
-//     Str2<<"Hello2";
-//     Str2<<"Hello3";
-//     Num2<<98;
-//     Num2<<42;
-//     Num2<<22;
-
-//     this->add_pie(Str2,Num2);
-
-//     this->show();
-// }
-
-
-graph_pie::graph_pie()
+graph_pie::graph_pie(QMainWindow *P)
 {
+    if(P != nullptr)
+    {
+        this->Parent = P;
+    }
+
     QString Str11 = "Test11";
     QString Str12 = "Test12";
 
@@ -74,6 +38,8 @@ graph_pie::graph_pie()
 
     this->show();
 }
+
+
 
 void graph_pie::add_pie(QList<QString> item_name,QList<int> item_data)
 {
