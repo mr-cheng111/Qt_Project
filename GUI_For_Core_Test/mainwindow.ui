@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1280</width>
+    <height>910</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>320</width>
+    <height>320</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="windowIcon">
+   <iconset theme="application-x-executable"/>
+  </property>
+  <property name="locale">
+   <locale language="Chinese" country="China"/>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QTabWidget" name="tabWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>0</y>
+      <width>1270</width>
+      <height>860</height>
+     </rect>
+    </property>
+    <property name="locale">
+     <locale language="Chinese" country="China"/>
+    </property>
+    <property name="currentIndex">
+     <number>2</number>
+    </property>
+    <widget class="graph_for_input" name="tab_bar">
+     <attribute name="title">
+      <string>条形图</string>
+     </attribute>
+    </widget>
+    <widget class="graph_pie" name="tab_pie">
+     <attribute name="title">
+      <string>饼图</string>
+     </attribute>
+    </widget>
+    <widget class="QWidget" name="tab_pictest">
+     <property name="locale">
+      <locale language="Chinese" country="China"/>
+     </property>
+     <attribute name="title">
+      <string>图片测试</string>
+     </attribute>
+     <widget class="QWidget" name="horizontalLayoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>9</x>
+        <y>9</y>
+        <width>1241</width>
+        <height>721</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <property name="spacing">
+        <number>10</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="pic_in">
+         <property name="text">
+          <string>pic_input</string>
+         </property>
+         <property name="textFormat">
+          <enum>Qt::AutoText</enum>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="pic_out">
+         <property name="text">
+          <string>pic_out</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QPushButton" name="Load_Pic">
+      <property name="geometry">
+       <rect>
+        <x>370</x>
+        <y>740</y>
+        <width>140</width>
+        <height>60</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>加载图片</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Start_test">
+      <property name="geometry">
+       <rect>
+        <x>770</x>
+        <y>740</y>
+        <width>140</width>
+        <height>60</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>开始测试</string>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="action">
+   <property name="text">
+    <string>...</string>
+   </property>
+  </action>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>graph_for_input</class>
+   <extends>QWidget</extends>
+   <header location="global">graph_for_input.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>graph_pie</class>
+   <extends>QWidget</extends>
+   <header location="global">graph_pie.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>
