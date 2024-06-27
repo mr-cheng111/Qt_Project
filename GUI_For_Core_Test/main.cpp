@@ -14,11 +14,13 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     MainWindow window;
 
+    // get_pic_dir *m = new get_pic_dir;
+
     window.show();
 
     //graph_for_input *M = new graph_for_input;
 
-    qDebug()<<"Start Test"<<endl;
+    //qDebug()<<"Start Test"<<endl;
 
     //M->show();
 

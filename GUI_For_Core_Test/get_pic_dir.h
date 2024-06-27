@@ -1,27 +1,25 @@
 #ifndef GET_PIC_DIR_H
 #define GET_PIC_DIR_H
-
 #include <QWidget>
 #include <QLineEdit>
 #include <QPushButton>
-
+#include <QHBoxLayout>
+#include <QFileDialog>
 
 class get_pic_dir : QWidget
 {
     Q_OBJECT
 public:
     get_pic_dir(QWidget *parent = nullptr);
-
-private slots:
-    void on_Ok_cilcked()
+    QString Get_Pic_Dir(void)
     {
-        this->File_Dir = new QString(this->Line->text());
+        return this->File_Dir;
     }
+    ~get_pic_dir();
 private:
     QWidget *Parent = nullptr;
-    QLineEdit *Line = new QLineEdit;
-    QString *File_Dir;
-    QPushButton *Button;
+    QString File_Dir;
+    QFileDialog *File = new QFileDialog(this);
 };
 
 #endif // GET_PIC_DIR_H

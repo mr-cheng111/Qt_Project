@@ -31,17 +31,17 @@ public:
         this->setMouseTracking(false);
     }
 
-    void wheelEvent(QWheelEvent *e)
+    void wheelEvent(QWheelEvent *event)
     {
-        QPoint numDegrees = e->angleDelta() / 8;
+        QPoint numDegrees = event->angleDelta() / 8;
 
-        if(this->Zoom_Size + numDegrees.y() / 80.0f < MAX_ZOOM_SIZE)
+        if(this->Zoom_Size + numDegrees.y() / 10.0f < MAX_ZOOM_SIZE)
         {
-            this->Zoom_Size += numDegrees.y() / 80.0f;
+            this->Zoom_Size += numDegrees.y() / 10.0f;
         }
-        else if(this->Zoom_Size + numDegrees.y() / 80.0f > MIN_ZOOM_SIZE)
+        else if(this->Zoom_Size + numDegrees.y() / 10.0f > MIN_ZOOM_SIZE)
         {
-            this->Zoom_Size += numDegrees.y() / 80.0f;
+            this->Zoom_Size += numDegrees.y() / 10.0f;
         }
 
         //qDebug()<<this->Zoom_Size<<endl;

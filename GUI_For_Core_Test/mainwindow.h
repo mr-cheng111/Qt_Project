@@ -21,6 +21,8 @@ private slots:
 
     void on_Start_test_clicked();
 
+    void on_MainWindow_iconSizeChanged(const QSize &iconSize);
+
 private:
     Ui::MainWindow *ui;
 };
